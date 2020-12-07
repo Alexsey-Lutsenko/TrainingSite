@@ -18,6 +18,7 @@ app.use(passport.initialize())
 require('./middleware/passport')(passport)
 
 app.use(require('morgan')('dev'))
+app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({extend: true}))
 app.use(bodyParser.json())
 // Log information view
