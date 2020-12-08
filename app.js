@@ -10,7 +10,7 @@ const positionRoutes = require('./routes/position')
 const keys = require('./config/keys')
 const app = express()
 
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(keys.mongoURI, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected.'))
     .catch(error => console.log(error))
 
@@ -19,7 +19,7 @@ require('./middleware/passport')(passport)
 
 app.use(require('morgan')('dev'))
 app.use('/uploads', express.static('uploads'))
-app.use(bodyParser.urlencoded({extend: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 // Log information view
 app.use(require('cors')())
