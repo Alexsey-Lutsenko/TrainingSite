@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {OrderPosition, Position} from "../shared/interfaces";
+import {Injectable} from '@angular/core'
+import {OrderPosition, Position} from '../shared/interfaces'
 
 @Injectable()
 export class OrderService {
@@ -18,6 +18,7 @@ export class OrderService {
     const candidate = this.list.find(p => p._id === orderPosition._id)
 
     if (candidate) {
+      // Изменяем кол-во
       candidate.quantity += orderPosition.quantity
     } else {
       this.list.push(orderPosition)
@@ -28,12 +29,14 @@ export class OrderService {
 
   remove(orderPosition: OrderPosition) {
     const idx = this.list.findIndex(p => p._id === orderPosition._id)
-
-    this.list.splice(idx,1)
+    this.list.splice(idx, 1)
     this.computePrice()
   }
 
-  clear() {}
+  clear() {
+    this.list = []
+    this.price = 0
+  }
 
   private computePrice() {
     this.price = this.list.reduce((total, item) => {
