@@ -11,9 +11,9 @@ const positionRoutes = require('./routes/position')
 const keys = require('./config/keys')
 const app = express()
 
-mongoose.connect(keys.mongoURI)
+mongoose.createConnection(keys.mongoURI)
     .then(() => console.log('MongoDB connected.'))
-    .catch(error => console.log(error))
+    .catch(error => console.log('I error here' + error))
 
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
