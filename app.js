@@ -11,7 +11,7 @@ const positionRoutes = require('./routes/position')
 const keys = require('./config/keys')
 const app = express()
 
-mongoose.connect(keys.mongoURI, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(keys.mongoURI)
     .then(() => console.log('MongoDB connected.'))
     .catch(error => console.log(error))
 
