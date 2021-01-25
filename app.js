@@ -13,7 +13,7 @@ const app = express()
 
 mongoose.createConnection(keys.mongoURI)
     .then(() => console.log('MongoDB connected.'))
-    .catch(error => console.log('I error here' + error))
+    .catch(error => console.log('***I error here*** ' + error))
 
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
