@@ -11,7 +11,7 @@ const positionRoutes = require('./routes/position')
 const keys = require('./config/keys')
 const app = express()
 
-mongoose.createConnection(keys.mongoURI)
+mongoose.connect(keys.mongoURI || process.env.mongoURI)
     .then(() => console.log('MongoDB connected.'))
     .catch(error => console.log('***I error here*** ' + error))
 
